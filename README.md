@@ -1,8 +1,8 @@
 # Covid Helpline
-#### helping spread communication about novel virus Covid19
+#### Helping spread communication about novel virus Covid19
 
 
-### Delivering important Coronavirus news via text. FREE for everyone.
+### Delivering important Coronavirus news via text. Free for everyone.
 Covid Helpline is a **open source tool** created to raise awareness and boost communication about the current coronavirus outbreak. This is done by making the latest updated data obtained from *John Hopkins*’ open source  *COVID-19* data repository available to everyone online and offline.
 
 # Why is this important?
@@ -13,11 +13,6 @@ These stats are extremely important; People at higher risk of contracting COVID-
 Making this information accessible via text, along with the latest Coronavirus news, and the CDC advice about how to stay safe would greatly aid mankind in it's quest to control this fatal virus.
 
 Covid Helpline is a *reasonably easy and cheap solution* to this issue.
-
-# User Cases
-
-# MVP demo
-
 
 # Help
 You can find answers to a variety of questions, along with a community of helpful developers over on the Covid Helpline social platforms. Replies vary since we are in the premier stages of development. Covid Helpline users also have access to email support, please contact us at covid.helpline@gmail.com for any inquiries.
