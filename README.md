@@ -18,10 +18,10 @@ Covid Helpline is a *reasonably easy and cheap solution* to this issue.
 You can find answers to a variety of questions, along with a community of helpful developers over on the Covid Helpline social platforms. Replies vary since we are in the premier stages of development. Covid Helpline users also have access to email support, please contact us at covid.helpline@gmail.com for any inquiries.
 
 # Contributors & Advanced Developers
-For anyone wishing to contribute to Covid Helpline or to customize files we recommend following our [development setup guides](https://github.com/trujivan/covid-helpline/blob/dev/.github/CONTRIBUTING.md).
+For anyone wishing to contribute to Covid Helpline or to customize files we recommend following our [development setup guides](https://github.com/Marwan01/covid-helpline/blob/master/.github/CONTRIBUTING.md).
 
 
 ### [Official Contributors Board](https://github.com/trujivan/covid-helpline/projects)
 
 # Copyright & License
-Copyright (c) 2020 Covid Helpline - Released under the [MIT license](https://github.com/trujivan/covid-helpline/blob/master/LICENSE). Covid Helpline and the Covid Helpline logo are trademarks of Covid Helpline official contributors. [Code of Conduct](https://github.com/trujivan/covid-helpline/blob/dev/.github/CODE_OF_CONDUCT.md)
+Copyright (c) 2020 Covid Helpline - Released under the [MIT license](https://github.com/trujivan/covid-helpline/blob/master/LICENSE). Covid Helpline and the Covid Helpline logo are trademarks of Covid Helpline official contributors. [Code of Conduct](https://github.com/Marwan01/covid-helpline/blob/master/CODE_OF_CONDUCT.md)
