@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+</head>
+<body>
+
+<form action="." method="POST">
+
+{% csrf_token %}
+<table>
+    {{ form.as_table }}
+</table>
+<button type="submit">Subscribe</button>
+</form>
+
+</body>
+</html>
