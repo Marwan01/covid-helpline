@@ -6,13 +6,13 @@ import pickle, json
 
 url = f'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-11-2020.csv'
 df = pd.read_csv(url)
-df['Last Update']= df['Last Update'].apply(lambda x: x.split("T")[0])
+df['Last Update'] = df['Last Update'].apply(lambda x: x.split("T")[0])
 df = df.replace(np.nan, '', regex=True)
 LOCATIONS = list(df['Country/Region'].unique()) + list(df['Province/State'].unique())
 
 def get_data_bas_location(location):
     if (location == "US" or location == "China"):
-        return ["",location,""]+ list(df[df['Country/Region'].str.contains(location)].groupby("Country/Region").sum().values[0])
+        return ["",location,""] + list(df[df['Country/Region'].str.contains(location)].groupby("Country/Region").sum().values[0])
     try:  
         dd = df[df['Country/Region'].str.contains(location)].values[0]
     except:
@@ -43,3 +43,6 @@ def handle_message(message_obj):
     else:
         msg_out = DEFAULT_RESPONSE
     send_text(msg_out,message_obj.from_number)
+
+
+    #### just a test change to check branch
