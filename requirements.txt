@@ -1,3 +1,4 @@
-Django
 twilio
+flask
 pandas
+newsapi-python
