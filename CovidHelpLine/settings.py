@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # TWILIO related
-TWILIO_ACCOUNT_SID = "your_TWILIO_ACCOUNT_SID"
-TWILIO_AUTH_TOKEN = "your_TWILIO_AUTH_TOKEN"
-TWILIO_NUMBER = "your_TWILIO_NUMBER"
+TWILIO_ACCOUNT_SID = "AC4a335f73055bbc4f844eca282402ea1a"
+TWILIO_AUTH_TOKEN = "95979c94607ba45200fcce4a14a69640"
+TWILIO_NUMBER = "+19142684399"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

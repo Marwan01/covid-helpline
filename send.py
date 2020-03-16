@@ -1,45 +1,22 @@
+# /usr/bin/env python
+# Download the twilio-python library from twilio.com/docs/libraries/python
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
 
-import pandas as pd 
-from datetime import datetime, timedelta
-import numpy as np
-import pickle, json
+app = Flask(__name__)
 
-url = f'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-11-2020.csv'
-df = pd.read_csv(url)
-df['Last Update']= df['Last Update'].apply(lambda x: x.split("T")[0])
-df = df.replace(np.nan, '', regex=True)
-LOCATIONS = list(df['Country/Region'].unique()) + list(df['Province/State'].unique())
+@app.route("/sms", methods=['GET', 'POST'])
+def sms_ahoy_reply():
+    """Respond to incoming messages with a friendly SMS."""
+    # Start our response
+    resp = MessagingResponse()
 
-def get_data_bas_location(location):
-    if (location == "US" or location == "China"):
-        return ["",location,""]+ list(df[df['Country/Region'].str.contains(location)].groupby("Country/Region").sum().values[0])
-    try:  
-        dd = df[df['Country/Region'].str.contains(location)].values[0]
-    except:
-        dd = df[df['Province/State'].str.contains(location)].values[0]
-    return list(dd)
+    # Add a message
+    resp.message("Ahoy! Thanks so much for your message.")
 
+    return str(resp)
 
-def generate_message_from_row(row):
-    message = f'As of {datetime.now().strftime("%B %d, %Y")}  In {row[0]} {row[1]} there are currenty \n'\
-    f'{row[3]} confirmed, \n'\
-    f'{row[5]} Recovered \n'\
-    f'and {row[4]} Deaths'
-    message = message.replace("  "," ")
-    return message
+if __name__ == "__main__":
+    app.run(debug=True)
 
-
-def handle_message(message_obj):
-    check_new_data(message_obj)
- 
-    message = message_obj.body.rstrip()
-    if(message.count("Tips")>0):
-        msg_out = return_tips()
-    elif(message.count("Daily")>0):
-        msg_out = subscribe_daily(message_obj)
-    elif( message in LOCATIONS):
-        row_test = get_data_bas_location(message)
-        msg_out = generate_message_from_row(row_test)
-    else:
-        msg_out = DEFAULT_RESPONSE
-    send_text(msg_out,message_obj.from_number)
+app.run(host='127.0.0.1', port=8080, debug=True)
