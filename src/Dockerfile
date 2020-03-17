@@ -6,4 +6,4 @@ WORKDIR /app
 RUN pip3 install -r requirements.txt
 RUN export GOOGLE_APPLICATION_CREDENTIALS=keys.json
 ENTRYPOINT ["python3"]
-CMD ["send.py"]
+CMD ["main.py"]
