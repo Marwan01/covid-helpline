@@ -1,7 +1,6 @@
-import pandas as pd
 from datetime import datetime, timedelta
-from urllib.error import HTTPError
 import numpy as np
+import pandas as pd
 
 
 def load_csv():
@@ -11,12 +10,12 @@ def load_csv():
         try:
             url = f'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/{date}.csv'
             df = pd.read_csv(url)
+
             return df
-        except HTTPError:
+        except:
             print("Report wasn't found moving one day back...")
             date = (datetime.now() - timedelta(counter)).strftime("%m-%d-%Y")
             counter += 1
-
 
 def load_data():
     df = load_csv()
@@ -25,11 +24,13 @@ def load_data():
     locations = list(df['Country/Region'].unique()) + list(df['Province/State'].unique())
     return df, locations
 
-
 def get_data_bas_location(location, df):
-    if location == "US" or location == "China":
+    if location.lower() == "US".lower() or  location.lower() == "USA".lower():
         return ["", location, ""] + list(
-             df[df['Country/Region'].str.contains(location)].groupby("Country/Region").sum().values[0])
+             df[df['Country/Region'].str.contains("US")].groupby("Country/Region").sum().values[0])
+    # elif location == "China"
+    # return ["", location, ""] + list(
+    #          df[df['Country/Region'].str.contains(location)].groupby("Country/Region").sum().values[0])
     try:
         dd = df[df['Province/State'].str.contains(location)].values[0]
     except:
@@ -38,24 +39,25 @@ def get_data_bas_location(location, df):
 
 
 def generate_message_from_row(row):
-    message = f'As of {datetime.now().strftime("%B %d, %Y")}  In {row[0]} {row[1]} there are currenty \n' \
+    message = f'In {row[0]} {row[1]}:\n' \
               f'{row[3]} confirmed, \n' \
-              f'{row[5]} Recovered \n' \
-              f'and {row[4]} Deaths'
+              f'{row[5]} recovered, \n' \
+              f'and {row[4]} deaths\n' \
+              f'as of {datetime.now().strftime("%B %d, %Y")}. '
     message = message.replace("  ", " ")
     return message
 
 
-def handle_message(location):
-
-    df, locations = load_data()
-
-    if location in locations:
-        #rows = get_data_bas_location(location, df)
-        row = get_data_bas_location(location, df)
-        #msg_out = "\n\n".join(generate_message_from_row(row) for row in rows)
-        msg_out = generate_message_from_row(row)
-    else:
-        msg_out = "There is no data for this location or check you spelling"
-
+def handle_message_location(location,df):
+    row = get_data_bas_location(location, df)
+    msg_out = generate_message_from_row(row)
     return msg_out
+
+
+def load_data_sms(bucket):
+    data = {}
+    for b in bucket.list_blobs(prefix='sub/'):
+        blob_path = b.name
+        b1 = blob_path[blob_path.find("+1")+2:blob_path.rfind("/")]
+        data[b1] = b.download_as_string().decode('utf-8')
+    return data
