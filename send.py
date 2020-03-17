@@ -7,15 +7,20 @@ from datetime import datetime, timedelta
 from urllib.error import HTTPError
 import numpy as np
 from newsapi import NewsApiClient
-
+from google.cloud import storage
+from google.cloud.storage import blob
 app = Flask(__name__)
 
-global DEFAULT_RESPONSE,ADVICE, newsapi
+global DEFAULT_RESPONSE,ADVICE, newsapi, client,bucket
 
 newsapi = NewsApiClient(api_key='32cbadba12654ed5b8fbf355e5da4ab1')
 
 
-DEFAULT_RESPONSE ="""Welcome to the covid help-line!
+client = storage.Client(project='covid-helpline')
+bucket = client.get_bucket('covid-sms')
+
+
+DEFAULT_RESPONSE ="""Welcome to the COVID-19 data-line!
 Text 'tips' to get information from the CDC about best practices
 A location you want the most up to date report. EX: 'Missouri' or 'Italy'
 If you want the most up to date news about COVID-19 text: 'News'"""
@@ -102,6 +107,23 @@ def return_news():
     NEWS
     return NEWS
 
+
+def save_text(bucket,phone_number,text):
+    path_to_save_sms = f'sms/{phone_number}/{datetime.now().strftime("%m-%d-%Y-%H-%M-%S")}.txt'
+    blob = bucket.blob(path_to_save_sms)
+    blob.upload_from_string(text)
+    return True
+
+
+def save_daily_subscription(bucket,phone_number,text):
+    location_subscribed = text.split(" ",1)[1]
+    path_to_save_subscription = f'sub/{phone_number}/{datetime.now().strftime("%m-%d-%Y-%H-%M-%S")}.txt'
+    blob = bucket.blob(path_to_save_subscription)
+    blob.upload_from_string(location_subscribed)
+    return  f'Thank you. You are now subsribed to daily messages for Corona Virus updates for {location_subscribed}'
+
+
+
 def handle_message(message_obj):
 
     df, locations = load_data()
@@ -110,8 +132,8 @@ def handle_message(message_obj):
         msg_out = ADVICE
     elif(message.count("News")>0):
         msg_out = return_news()
-    # elif(message.count("Daily")>0):
-    #     msg_out = subscribe_daily(message_obj)
+    elif(message.count("Subscribe")>0):
+        msg_out = subscribe_daily(message_obj)
     elif( message in locations):
         msg_out = handle_message_location(message,df)
     else:
@@ -125,6 +147,9 @@ def handle_message(message_obj):
 def sms_ahoy_reply():
     number = request.form['From']
     message_body = request.form['Body']
+    save_text(bucket,number,message_body)
+
+    
     msg_out_response = handle_message(message_body)
     resp = MessagingResponse()
     resp.message('{}'.format(msg_out_response))
