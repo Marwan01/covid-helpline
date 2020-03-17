@@ -1,0 +1,5 @@
+twilio
+flask
+pandas
+newsapi-python
+google-cloud-storage
