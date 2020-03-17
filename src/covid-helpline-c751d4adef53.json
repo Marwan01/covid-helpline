@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "covid-helpline",
+  "private_key_id": "c751d4adef53e5f6425adac0f817c18966c35f0c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDD2MddBVrOu1Hg\nJSV9cSE+3Msb6BkOhKJiJqPHTR+0VlnCAXmB39DBiP5B0OrYbxUClNWm9PG2CcGf\nNDokei0S64YBmJFDHjkTuKArI5VwgoBcWWQWq4B34SCHlDrZON5R7lahf1x/Cx0c\nMAZXOKixUG+Hwo6U+OPAmQJWTMwX8PHeNSmKJSvYtzaqllkL56i4RJehciSZLyo7\n4bxxoKshGwEI/0o4BdaE3kmPKDNEt9DsTtH2O49FUMsrtz1a1sRTSEJRMmjTE9sY\nHu0Vv2XG732blejhr22M5INUtWXG7747AIuQQYoiNWl7AS3dkrbg6bL5RTUOXqXA\nbU6GmIazAgMBAAECggEALjH7cIcbUMkhemf4rFqbd2r4I7h+9Iw3i0RG/HNGJ7D4\nkgjsAsTqxkPMiXTAeFXXVFkL/konm4M4nxdgIYuKBzzzynuUxAqkdvDlItfNX5EA\nuwfA0pIYhu5c0G4X5XYDBrtbxtM2W6cg8i2nyToNnGl3LUQogp4khqDwyq9psrmR\n1+gvyLxSZuQNxq+I4wW5fo16xA2J8Cd2EZ0VpTb3AwyVlpLmOGenZGgu+ZmHl4ak\nLPnB/Tdae+sUoixXD8Mmv1fhwFwTDdVrEQXKnSWhjg9VdHFV+aglOZirJjKOu7vJ\nnPbp1r5e7DJ7fqBCG9X4biutGJ6E/3v29R+UQme0OQKBgQD7G+Yb04UUmVphWdhk\nPU40DJOG+a6Vq5APz5BC/kwCJTeJxAla+cV79jame4PpzmWsOsTau2bGgVajcmf2\nHQqxgMWDcyVoi1Jbt7gII5b64IeYiDCV0BktKUHuZqZg3qPySfRT/6BIQnRw/Xxa\nWYt1a5n+vS8c4ZQvRU6DZUfWCwKBgQDHqVOrt9UfmUdG7K2zc0ADKz2mXqT2hv1a\nek8vTekWe0UjI7t4oc6FO4ldztD9IDPb8yC1PrvZYSSqP9ByMHRFDv7l2MM5w2FV\nI9v1QC/O+MXzI6lhjym3VstRAmZX+mmy+PaTZf/yg+C9HoYY9eN20FFQc/e6l3lZ\nwV6DBq/C+QKBgGMhUGYLyq2nHJbx8QshaI4DqPnP96v+XpDfUAQif78ZEiPA0DCq\nCdw2Br0SZbEXWev0B2KSOLCEvr8nmwL91Are2xpZipsK5ShwDqan5iKEIQOGQCfk\nTwwVDYIf4+659d7gcyP19kCQe4dfiofgcb2ZDOITrVWpd+ZxZd1ZTlKhAoGAahVw\nrGtXZJunQGree9s/Zq+h6PSeh5H/qQQVcJffwZ8rg9kncZffR/DzMpGBfwyOIU5T\n0ZkMbBpuRbr0QMe37z1hd7QtPlKuM3ODGhLJlBmf62jGRVywmIYYLumsgRA++uXG\n9VgbnrotPa6rJzX2bpmOqsWDGXQD+QmB8vIpjtkCgYEAjGKPNjVMDBphuYGGa46i\nahSdnAfszwC/7DQL2t3WrAvWVQBbgvoNss9XK+a6VzeAlFCHGoYBHCC8AiG1zfLF\n8L6p47pf8RVNm+f2QOPhnd7WG/d+XK1tS5hrtgBBQHZ0TfRkLOOkmvhED7kFUkqc\n1ToA2tw88xJKDkH0YAGm5yQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "covid-sms@covid-helpline.iam.gserviceaccount.com",
+  "client_id": "105194740013620465321",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/covid-sms%40covid-helpline.iam.gserviceaccount.com"
+}
