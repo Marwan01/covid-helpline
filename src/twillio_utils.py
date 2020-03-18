@@ -1,3 +1,9 @@
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
+from google.cloud import storage
+from google.cloud.storage import blob
+
 def send_message(msg,number):
     message = client_twillio.messages.create(body=msg,from_='+19142684399',to=number)
     return message.sid
@@ -27,4 +33,21 @@ def trigger_daily_sms(bucket):
     succes_count, failure_count = send_mass_text(sms_to_send)
 
     return f'Sucesfully sent {succes_count} sms. Failed for {failure_count} sms.'
+
+def handle_message(bucket,number,message_obj):
+    df, locations = load_data()
+    message = message_obj.rstrip()
+    if(message.count("Advice")>0):
+        msg_out = ADVICE
+    elif(message.count("News")>0):
+        msg_out = return_news()
+    elif(message.count("Subscribe")>0):
+        msg_out = save_daily_subscription(bucket,number,message_obj)
+    elif(message.count("Send all")>0 and number =="+16364749180"):
+        msg_out = trigger_daily_sms(bucket)
+    elif( message in locations):
+        msg_out = handle_message_location(message,df)
+    else:
+        msg_out = DEFAULT_RESPONSE
+    return msg_out
 
