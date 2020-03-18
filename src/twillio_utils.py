@@ -3,7 +3,9 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from google.cloud import storage
 from google.cloud.storage import blob
-
+from datetime import datetime, timedelta
+from data_utils import *
+from responses import *
 def send_message(msg,number):
     message = client_twillio.messages.create(body=msg,from_='+19142684399',to=number)
     return message.sid
@@ -51,3 +53,8 @@ def handle_message(bucket,number,message_obj):
         msg_out = DEFAULT_RESPONSE
     return msg_out
 
+def save_text(bucket,phone_number,text):
+    path_to_save_sms = f'sms/{phone_number}/{datetime.now().strftime("%m-%d-%Y-%H-%M-%S")}.txt'
+    blob = bucket.blob(path_to_save_sms)
+    blob.upload_from_string(text)
+    return True

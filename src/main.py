@@ -10,8 +10,9 @@ from google.cloud.storage import blob
 
 from keys import account_sid, auth_token
 from data_utils import *
-from news import *
 from responses import *
+from news import *
+from twillio_utils import *
 
 app = Flask(__name__)
 
