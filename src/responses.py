@@ -17,3 +17,6 @@ ADVICE ="""CDC Advice: \n
 - Clean AND disinfect frequently touched surfaces daily. This includes tables, doorknobs, light switches, countertops, handles, desks, phones, keyboards, toilets, faucets, and sinks.
 
 Source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html"""
+
+PHONE_MSG = ''' Our service is only available through sms! Please text us!
+'''

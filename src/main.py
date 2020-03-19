@@ -6,7 +6,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from google.cloud import storage
 from google.cloud.storage import blob
-
+from twilio import twiml
 
 from keys import account_sid, auth_token
 from .data_utils import *
@@ -26,6 +26,18 @@ def sms_ahoy_reply():
     msg_out_response = handle_message(bucket,number,message_body)
     resp = MessagingResponse()
     resp.message('{}'.format(msg_out_response))
+    return str(resp)
+
+@app.route("/voice", methods=['GET', 'POST'])
+def phone_receiver():
+    # Start our TwiML response
+    resp = twiml.Response()
+
+    # Read a message aloud to the caller
+    resp.say(PHONE_MSG, voice='alice')
+    # Play an audio file for the caller
+    # resp.play('location_pre_recorded_message')
+
     return str(resp)
 
 client_twillio = Client(account_sid, auth_token)
