@@ -55,4 +55,3 @@ def get_state_stats(zip_code):
     return county_response+state_response
    
 
-print(get_state_stats("94710"))
