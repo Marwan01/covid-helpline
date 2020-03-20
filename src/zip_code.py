@@ -27,7 +27,6 @@ def get_state_stats(zip_code):
     
 
     data = load_state_df()
-    print("test")
 
     search = SearchEngine(simple_zipcode=True) # set simple_zipcode=False to use rich info database
     zip_code_data = search.by_zipcode(zip_code).to_dict()
