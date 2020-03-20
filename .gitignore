@@ -3,3 +3,6 @@
 **/DS_Store
 src/keys.py
 src/keys.json
+
+venv
+.vscode
