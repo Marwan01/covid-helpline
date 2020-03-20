@@ -1,5 +1,5 @@
 .tests/*
 .idea/
-**/DS_Store
-src/keys.py
-src/keys.json
+**/.DS_Store
+**/keys.py
+**/keys.json
