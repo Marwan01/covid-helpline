@@ -43,7 +43,7 @@ def generate_message_from_row(row):
     message = f'In {row[0]} {row[1]}:\n' \
               f'{row[3]} confirmed, \n' \
               f'{row[5]} recovered, \n' \
-              f'and {row[4]} deaths\n' \
+              f'and {row[4]} deaths,\n' \
               f'as of {datetime.now().strftime("%B %d, %Y")}. '
     message = message.replace("  ", " ")
     return message
