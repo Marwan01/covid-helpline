@@ -23,7 +23,7 @@ def load_state_df():
         except:
             print("Error in fetching the csv.")
 
-def get_state_stats(zip_code):
+def get_zip_code_stats(zip_code):
     
 
     data = load_state_df()

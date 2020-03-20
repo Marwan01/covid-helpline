@@ -7,7 +7,8 @@ from datetime import datetime, timedelta
 from .data_utils import *
 from .responses import *
 from .news import return_news
-
+from .zip_code import get_zip_code_stats
+import re
 
 def send_message(msg,number):
     # Where do you get client_twillio???
@@ -50,6 +51,8 @@ def handle_message(bucket,number,message_obj):
     message = message_obj.rstrip()
     if(message.count("Advice")>0):
         msg_out = ADVICE
+    elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
+        msg_out = get_zip_code_stats(message)
     elif(message.count("News")>0):
         msg_out = return_news()
     elif(message.count("Subscribe")>0):
