@@ -5,10 +5,28 @@ from uszipcode import SearchEngine
 
 import pandas as pd 
 
+def load_county_df():
+    while True:
+        try:
+            url = f'https://coronadatascraper.com/timeseries-jhu.csv'
+            df = pd.read_csv(url)
+            return df
+        except:
+            print("Error in fetching the csv.")
+            
+def load_state_df():
+    while True:
+        try:
+            url = f'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv'
+            df = pd.read_csv(url)
+            return df
+        except:
+            print("Error in fetching the csv.")
+
 def get_state_stats(zip_code):
     
 
-    data = pd.read_csv("confirmed_cases.csv")
+    data = load_state_df()
 
     search = SearchEngine(simple_zipcode=True) # set simple_zipcode=False to use rich info database
     zip_code_data = search.by_zipcode(zip_code).to_dict()
@@ -17,7 +35,7 @@ def get_state_stats(zip_code):
     if(zip_code_data['state'] is not None):
 
         if(zip_code_data['county'] is not None):
-            county_data = pd.read_csv("county_cases.csv")
+            county_data = load_county_df()
 
             county_name = zip_code_data['county'] 
 
