@@ -4,10 +4,10 @@ from twilio.rest import Client
 from google.cloud import storage
 from google.cloud.storage import blob
 from datetime import datetime, timedelta
-from .data_utils import *
-from .responses import *
-from .news import return_news
-from .zip_code import get_zip_code_stats
+from data_utils import *
+from responses import *
+from news import return_news
+from zip_code import get_zip_code_stats
 import re
 
 def send_message(msg,number):

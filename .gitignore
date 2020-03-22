@@ -6,3 +6,4 @@ src/keys.json
 
 venv
 .vscode
+src/gcloud_creds.json
