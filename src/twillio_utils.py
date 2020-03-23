@@ -4,6 +4,18 @@ from twilio.rest import Client
 from google.cloud import storage
 from google.cloud.storage import blob
 from datetime import datetime, timedelta
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
+from google.cloud import storage
+from google.cloud.storage import blob
+from datetime import datetime, timedelta
+from data_utils import *
+from responses import *
+from news import return_news
+from zip_code import get_zip_code_stats
+import re
+
 import difflib
 from keys import account_sid, auth_token
 from data_utils import *
@@ -59,6 +71,8 @@ def handle_message(bucket,number,message_obj):
     location_clean = difflib.get_close_matches(message, locations,1)
     if(message.count("Advice")>0):
         msg_out = ADVICE
+    elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
+        msg_out = get_zip_code_stats(message)
     elif(message.count("News")>0):
         msg_out = return_news()
     elif(message.count("Subscribe")>0):

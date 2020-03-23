@@ -39,11 +39,11 @@ def get_data_bas_location(location, df):
 
 
 def generate_message_from_row(row):
-    message = f'In {row[0]} {row[1]}:\n' \
-              f'{row[3]} confirmed, \n' \
-              f'{row[5]} recovered, \n' \
-              f'and {row[4]} deaths\n' \
-              f'as of {datetime.now().strftime("%B %d, %Y")}. '
+    message = f'{row[0].upper()}:\n' \
+              f'Today: {row[3]} confirmed cases of Covid-19\n' \
+              f'Recovered: {row[5]} \n' \
+              f'Deaths: {row[4]}\n' \
+              f'as of {datetime.now().strftime("%B %d, %Y")} '
     message = message.replace("  ", " ")
     return message
 

@@ -3,3 +3,7 @@ flask
 pandas
 newsapi-python
 google-cloud-storage
+
+# added by glenn parham for zip_code
+uszipcode
+us
