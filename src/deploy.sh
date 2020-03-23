@@ -74,13 +74,17 @@ else
   ${SUDO} gcloud builds submit --tag ${REPOSITORY}:${VERSION_TAG}
 fi
 
+
+
 # push to cloud run
 if [[ ${DEPLOY} == true ]]; then
     echo "Pushing image to GCP Cloud Run..."
     gcloud run deploy covid-helpline --image ${REPOSITORY}:${VERSION_TAG} --platform managed --region us-central1 
+else 
+    echo "WARNING: You built the image but did not deploy it. Rerun the deploy script with -d to deploy..."
 fi
 
 # cleanup
-${SUDO} docker rmi -f ${REPOSITORY}/ch:${VERSION_TAG}
+${SUDO} docker rmi -f ${REPOSITORY}:${VERSION_TAG}
 
 
