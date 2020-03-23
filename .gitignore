@@ -7,3 +7,4 @@ src/keys.json
 venv
 .vscode
 src/gcloud_creds.json
+src/__pycache__/**
