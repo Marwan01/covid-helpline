@@ -12,6 +12,10 @@ Covid Helpline is a **open source tool** created to raise awareness and boost co
 
 ## Getting Started
 
+to get started, text the below number following the below instructions:
+
+![number](assets/number.png)
+
 * Text **"Advice"** to get CDC's best advice about how to stay safe during the Covid-19 pandemic.
 * Text **"News"** to get the latest news articles about Coronavirus from a truthful source:  [News API](https://newsapi.org/).
 * Text the desired **country name** *or* **state/province name** to the designated twilio phone number to receive the latest updated data from [John Hopkins' open source repo](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports) about the number of *confirmed cases*, *deaths*, and *recoveries* in that location.
@@ -29,24 +33,37 @@ These stats are extremely important; People at higher risk of contracting COVID-
 Making this information accessible via text, along with the latest Coronavirus news, and the CDC advice about how to stay safe would greatly aid mankind in it's quest to control this fatal virus. Covid Helpline is a *reasonably easy and cheap solution* to this issue.
 
 
-### Installing
+### Getting Started
 
-To get started make sure you have [Python](https://www.python.org/downloads/) and [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart) installed.
+This project uses Python and Twilio. To get started make sure you have [Python 3.7+](https://www.python.org/downloads/) and [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart) installed. You can install Twilio CLI with Homebrew using this commad:
+`brew tap twilio/brew && brew install twilio`
 
-Install app dependencies:
-`pip3 install requirements.txt` 
+You will need to login to Twilio CLI:
+`twilio login`
 
-To start your own localhost flask server: 
+In order to run the project you need the following credentials:
+* `keys.json` that you can get by generating an IAM role in [GCP](https://cloud.google.com/storage/docs/access-control/iam-roles) with the Storage Object Access Role.
+* `keys.py` where you will need to add your Twilio credentials from the [Twillio console](https://www.twilio.com/console) and your News API token that you can genenrate [here](https://newsapi.org/).
+
+Use virtualenv to create an environment and install app dependencies:
+```sh
+virtualenv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+To start your own localhost flask server:
 `python3 main.py`
 
 Twilio partners with [Ngrok](https://ngrok.com/) which allows you to share your localhost via network. This makes the next command possible and lets you link your python script to Twilio. After logging in to the Twilio CLI, set your Twilio URL webhook to be the one from your localhost:
-`twilio phone-numbers:update "+1XXXXXXXXXX" --sms-url="http://localhost:1337/sms"`
 
++19142684397 is our development number. When using your own Twilio account, make sure you replace the below number with your own.
 
-You should be able to text your Twilio number and access and develop this application.
+`twilio phone-numbers:update "+19142684397" --sms-url="http://localhost:8080/sms"`
+
+Now you should be able to text your number and use the app.
 
 ## Testing
-
 There is currently no testing for the code. Due to the importance of speed of delivery in this situation, we decided to focus on user/load testing and make sure we can scale the functionality to those who need it the most. 
 
 ## Deployment
@@ -62,7 +79,7 @@ We containerize our python app using docker and then deploy it to GCP Cloud Run 
 
 We are currently seeking developers who are willing to give us a hand completing the work listed in the [issues section](https://github.com/Marwan01/covid-helpline/issues) following our [contribution guidelines](https://github.com/Marwan01/covid-helpline/blob/master/.github/CONTRIBUTING.md).
 
-- To be added as a contributor, please contact me via marwanest@live.fr
+- To be added as a contributor, please contact us via covid.helpline@gmail.com.
 
 ## Versioning
 
@@ -74,6 +91,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
 * **Alexandru Andrei** - *Initial work* - [AlexAndrei98](https://github.com/AlexAndrei98)
 * **Vlad Khudik** - *Initial work* - [VoltK](https://github.com/VoltK)
+* **Glenn Parham** - *Initial work* - [glennparham](https://github.com/glennparham)
+
 
 See also the list of [contributors](https://github.com/Marwan01/covid-helpline/contributors) who participated in this project.
 
@@ -83,4 +102,4 @@ Copyright (c) 2020 Covid Helpline - Released under the [MIT license](https://git
 
 # Support
 
- *This project is in serious need of contributions and funding.* If you are interested in saving the world, getting your questions answered, or reaching out to the developers, contact us at via covid.helpline@gmail.com. We are currently working on setting up a donation page so we can keep Covid Helpline running for FREE for everybody.
+ *This project is in serious need of contributions and funding.* If you are interested in saving the world, getting your questions answered, or reaching out to the developers, contact us at via covid.helpline@gmail.com. We are currently asking for donations via this [GoFundMe page](https://www.gofundme.com/f/help-spread-information-about-covid19-via-text) and would really appreciate any donation amount. The goal is to keep Covid Helpline running for FREE for all of its users. Help us with our mission by helping us spread the word on social media: [Facebook](https://www.facebook.com/covidhelpline) & [Instagram](https://www.instagram.com/covid19helpline/).

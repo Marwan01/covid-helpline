@@ -1,5 +1,9 @@
 .tests/*
 .idea/
+venv
+.vscode
+src/gcloud_creds.json
+src/__pycache__/**
 **/.DS_Store
 **/keys.py
 **/keys.json
