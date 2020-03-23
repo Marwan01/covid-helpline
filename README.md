@@ -14,12 +14,12 @@ Covid Helpline is a **open source tool** created to raise awareness and boost co
 
 to get started, text the below number following the below instructions:
 
-![number](assets/number.png)
+![number](assets/COVID-19TEXTWHITE.png)
 
 * Text **"Advice"** to get CDC's best advice about how to stay safe during the Covid-19 pandemic.
 * Text **"News"** to get the latest news articles about Coronavirus from a truthful source:  [News API](https://newsapi.org/).
 * Text the desired **country name** *or* **state/province name** to the designated twilio phone number to receive the latest updated data from [John Hopkins' open source repo](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports) about the number of *confirmed cases*, *deaths*, and *recoveries* in that location.
-* Text **"Subscribe"** followed by **country/state** name (Example: 'Subscribe Italy') to receieve the most up to date Covid-19 count report from John Hopkins as soon as it is released. 
+* Text **"Subscribe"** followed by **country/state** name (Example: 'Subscribe Italy') to receieve the most up to date Covid-19 count report from John Hopkins as soon as it is released.
 * Text **anything else** to receive the generic helper SMS with all of the above options.
 * Text **"Stop"** to opt out.
 
@@ -64,7 +64,7 @@ Twilio partners with [Ngrok](https://ngrok.com/) which allows you to share your 
 Now you should be able to text your number and use the app.
 
 ## Testing
-There is currently no testing for the code. Due to the importance of speed of delivery in this situation, we decided to focus on user/load testing and make sure we can scale the functionality to those who need it the most. 
+There is currently no testing for the code. Due to the importance of speed of delivery in this situation, we decided to focus on user/load testing and make sure we can scale the functionality to those who need it the most.
 
 ## Deployment
 
@@ -83,7 +83,7 @@ We are currently seeking developers who are willing to give us a hand completing
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Marwan01/covid-helpline/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Marwan01/covid-helpline/tags).
 
 ## Authors
 
