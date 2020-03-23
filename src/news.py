@@ -11,8 +11,12 @@ def return_news():
                                           category='health',
                                           language='en',
                                           country='us')
-    NEWS  ="Today's most popular news headlines about Covid-19: \n\n"
-    for el in top_headlines['articles'][:5]:
-        NEWS += "- "+ el['title'] + '\n'
+    NEWS  ="Today's most popular article about Covid-19: \n\n"
+    el = top_headlines['articles'][0]
+    NEWS += "- Title: "+ el['title'] + '\n'
+    NEWS += "- Content:"+ el['description'] + '\n'
+    NEWS += "- Source: "+ el['url'] + '\n'
+    NEWS += el['urlToImage'] + '\n'
+
     NEWS
     return NEWS
