@@ -4,18 +4,32 @@ from twilio.rest import Client
 from google.cloud import storage
 from google.cloud.storage import blob
 from datetime import datetime, timedelta
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
+from twilio.rest import Client
+from google.cloud import storage
+from google.cloud.storage import blob
+from datetime import datetime, timedelta
 from data_utils import *
 from responses import *
 from news import return_news
 from zip_code import get_zip_code_stats
 import re
 
+import difflib
+from keys import account_sid, auth_token
+from data_utils import *
+from responses import *
+from news import *
+
+
+client_twillio = Client(account_sid, auth_token)
+
+
 def send_message(msg,number):
-    # Where do you get client_twillio???
     message = client_twillio.messages.create(body=msg,from_='+19142684399',to=number)
     return message.sid
-
-
+    
 def load_data_sms(bucket):
     data = {}
     for b in bucket.list_blobs(prefix='sub/'):
@@ -24,31 +38,37 @@ def load_data_sms(bucket):
         data[b1] = b.download_as_string().decode('utf-8')
     return data
 
-
-def send_mass_text(data):
+def send_mass_text(data,bucket):
     suc= 0
     fail = 0
     for num, loc in data.items():
         try:
-            # where do you get bucket???
             msg = handle_message(bucket,num,loc)
             send_message("New report released for your subscribed location: \n\n"+msg,num)
             suc+=1
         except:
             fail+=1
-    return suc,fail
 
+    return suc,fail
 
 def trigger_daily_sms(bucket):
     sms_to_send = load_data_sms(bucket)
-    succes_count, failure_count = send_mass_text(sms_to_send)
+    succes_count, failure_count = send_mass_text(sms_to_send,bucket)
 
     return f'Sucesfully sent {succes_count} sms. Failed for {failure_count} sms.'
+
+def save_daily_subscription(bucket,phone_number,text):
+    location_subscribed = text.split(" ",1)[1]
+    path_to_save_subscription = f'sub/{phone_number}/{datetime.now().strftime("%m-%d-%Y-%H-%M-%S")}.txt'
+    blob = bucket.blob(path_to_save_subscription)
+    blob.upload_from_string(location_subscribed)
+    return  f'Thank you. You are now subsribed to daily messages for Corona Virus updates for {location_subscribed}'
 
 
 def handle_message(bucket,number,message_obj):
     df, locations = load_data()
     message = message_obj.rstrip()
+    location_clean = difflib.get_close_matches(message, locations,1)
     if(message.count("Advice")>0):
         msg_out = ADVICE
     elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
@@ -59,21 +79,14 @@ def handle_message(bucket,number,message_obj):
         msg_out = save_daily_subscription(bucket,number,message_obj)
     elif(message.count("Send all")>0 and number =="+16364749180"):
         msg_out = trigger_daily_sms(bucket)
-    elif( message in locations):
-        msg_out = handle_message_location(message,df)
+    elif( len(location_clean) >0):
+        msg_out = handle_message_location(location_clean[0],df)
     else:
         msg_out = DEFAULT_RESPONSE
     return msg_out
 
-
 def save_text(bucket,phone_number,text):
     path_to_save_sms = f'sms/{phone_number}/{datetime.now().strftime("%m-%d-%Y-%H-%M-%S")}.txt'
-    bucket.blob(path_to_save_sms).upload_from_string(text)
-    return True
-
-
-def save_daily_subscription(bucket,number,message_obj):
-    # TODO what should be a path to save subscriptions?
-    path_to_subscription = f'sms/...'
-    bucket.blob(path_to_subscription).upload_from_string(message_obj)
+    blob = bucket.blob(path_to_save_sms)
+    blob.upload_from_string(text)
     return True
