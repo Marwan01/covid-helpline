@@ -1,7 +1,8 @@
 #!/bin/bash
 REPOSITORY=gcr.io/covid-helpline/covid-helpline
+CREDS=./keys.py
 GCPLOGIN=true
-COMMITPUSH=false
+GCPCREDS=./keys.json
 
 while getopts "nchdot:i:" opt; do
   case ${opt} in
@@ -9,7 +10,6 @@ while getopts "nchdot:i:" opt; do
       echo "Available optional arguments:
       -h : help
       -n : no gcloud login
-      -c : commit and push code
       -t : version tag 
       -d : deploy"
       exit 0
@@ -30,7 +30,6 @@ while getopts "nchdot:i:" opt; do
       if [[ $OPTARG =~ $tagNum ]]
         then
           VERSION_TAG=$OPTARG
-          echo "Using tag: $OPTARG"
         else
           echo "A numeric tag number is required"
           exit -1
@@ -43,32 +42,45 @@ while getopts "nchdot:i:" opt; do
   esac
 done
 
+# make sure you have necessary credentials so deployment does not fail
+if ! test -f "$CREDS"  ; then
+  echo "$CREDS not found. Exiting..."
+  exit 0
+fi
+if ! test -f "$GCPCREDS"  ; then
+  echo "$GCPCREDS not found. Exiting..."
+  exit 0
+else
+    echo "$CREDS and $GCPCREDS found. Proceeding with build..."
+fi
+
 # login to GCP
 if [[ ${GCPLOGIN} == true ]]; then
   echo "Login to GCP:" 
   ${SUDO} gcloud auth login
 fi
 
-# commit and push code to Github
-if [[ ${COMMITPUSH} == true ]]; then
-  echo "Committing and pushing your local changes...." 
-  ${SUDO} git add *
-  ${SUDO} git commit -m "commit via deploy script"
-  ${SUDO} git push
-fi
-
 # build image
-echo "Building image..."
-${SUDO} gcloud builds submit --tag ${REPOSITORY}/ch:${VERSION_TAG}
+echo "Using branch:" $(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+if [ -z "$VERSION_TAG" ]; then 
+  echo "No specific tag entered. Here are the tagged repo images on GCP: "; 
+  gcloud container images list-tags $REPOSITORY
+  echo "Enter new version tag: (or CTRL+C to exit)"; 
+  read $VERSION_TAG
+  echo "Building image..."
+  ${SUDO} gcloud builds submit --tag ${REPOSITORY}:${VERSION_TAG}
+else 
+  echo "Building image with tag version: '$VERSION_TAG'..."; 
+  ${SUDO} gcloud builds submit --tag ${REPOSITORY}:${VERSION_TAG}
+fi
 
 # push to cloud run
 if [[ ${DEPLOY} == true ]]; then
-    echo "Deploying branch:" $(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
     echo "Pushing image to GCP Cloud Run..."
-    gcloud run deploy covid-helpline --image ${REPOSITORY}/ch:${VERSION_TAG} --platform managed --region us-central1 
+    gcloud run deploy covid-helpline --image ${REPOSITORY}:${VERSION_TAG} --platform managed --region us-central1 
 fi
 
 # cleanup
-${SUDO} docker rmi -f ${REPOSITORY}/ch:${VERSION_TAG} || true
+${SUDO} docker rmi -f ${REPOSITORY}/ch:${VERSION_TAG}
 
 

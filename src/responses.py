@@ -3,8 +3,8 @@ DEFAULT_RESPONSE ="""Welcome to the Covid-19 Helpline. \n
 - Text 'Advice' to get infromation on how to protect yourself from Covid-19.
 - Text 'News' to get the most popular daily news article about Covid-19.
 - Text your zip code (i.e. 12345) to get the latest info on Covid-19 in your area.\n
-- Text country/state name (Example: 'California' or 'Spain') to get the most up to date Covid-19 count report from John Hopkins. 
-- Text 'Subscribe' followed by country/state name (Example: 'Subscribe Italy') to receieve the most up to date Covid-19 count report from John Hopkins as soon as it is released. 
+- Text country/state name (i.e. 'California' or 'Spain') to get the most up to date Covid-19 count report from John Hopkins. 
+- Text 'Subscribe' followed by country/state name (i.e. 'Subscribe Italy') to receieve the most up to date Covid-19 count report from John Hopkins as soon as it is released. 
 - Text 'Stop' to opt out."""
 
 ADVICE ="""CDC Advice: \n
