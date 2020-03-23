@@ -3,10 +3,10 @@ global DEFAULT_RESPONSE,ADVICE, newsapi, client,bucket, client_twillio
 
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
+from twilio.twiml.voice_response import VoiceResponse
 from twilio.rest import Client
 from google.cloud import storage
 from google.cloud.storage import blob
-from twilio import twiml
 
 from keys import account_sid, auth_token
 from data_utils import *
@@ -31,7 +31,7 @@ def sms_ahoy_reply():
 @app.route("/voice", methods=['GET', 'POST'])
 def phone_receiver():
     # Start our TwiML response
-    resp = twiml.Response()
+    resp = VoiceResponse()
 
     # Read a message aloud to the caller
     resp.say(PHONE_MSG, voice='alice')
