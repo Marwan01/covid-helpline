@@ -6,23 +6,10 @@ from datetime import datetime, timedelta
 
 import pandas as pd 
 
-def load_county_df():
-    while True:
-        try:
-            url = f'https://coronadatascraper.com/timeseries-jhu.csv'
-            df = pd.read_csv(url)
-            return df
-        except:
-            print("Error in fetching the csv.")
-            
-def load_state_df():
-    while True:
-        try:
-            url = f'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv'
-            df = pd.read_csv(url)
-            return df
-        except:
-            print("Error in fetching the csv.")
+
+# fix
+def load_df(url):
+    return pd.read_csv(url)
 
 
 def load_state_daily_report():
@@ -41,18 +28,19 @@ def load_state_daily_report():
 
 def get_zip_code_stats(zip_code):
     
-
-    data = load_state_df()
+    state_data_url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv'
+    data = load_df(state_data_url)
 
     search = SearchEngine(simple_zipcode=True) # set simple_zipcode=False to use rich info database
     zip_code_data = search.by_zipcode(zip_code).to_dict()
     county_response=""
-    state_response=""
+
    
     if(zip_code_data['state'] is not None):
         
         if(zip_code_data['county'] is not None):
-            county_data = load_county_df()
+            county_data_url = 'https://coronadatascraper.com/timeseries-jhu.csv'
+            county_data = load_df(county_data_url)
 
             county_name = zip_code_data['county'] 
 
@@ -61,6 +49,7 @@ def get_zip_code_stats(zip_code):
                 # print(county_data.head())
                 county_number_cases_today = int(county_data.iloc[:,-1].iloc[0])
                 county_number_cases_yesterday = int(county_data.iloc[:,-2].iloc[0])
+                # unused variable
                 county_url = county_data.iloc[:,7].iloc[0]
                 if(county_number_cases_yesterday > 0 and county_number_cases_today > 0 ):
                     county_growth_rate = ((county_number_cases_today-county_number_cases_yesterday)/county_number_cases_yesterday)*100
@@ -68,6 +57,7 @@ def get_zip_code_stats(zip_code):
                     county_response = f"{county_name.upper()}\nToday: {county_number_cases_today} confirmed cases of Covid-19 \nYesterday: {county_number_cases_yesterday} confirmed cases \nGrowth Rate: +{county_growth_rate_str}%\n"
                 elif(county_number_cases_today > 0 ):
                     county_response = f"{county_name.upper()}\nToday: {county_number_cases_today} confirmed cases of Covid-19\n"
+                # unused variable
                 city_url = zip_code_data['major_city'].replace(" ", "%20")
                 # county_response+=f"Latest updates from your mayor: https://twitter.com/search?q={city_url}%20mayor&f=user\n\n"
                 # county_response+=f"Source: {county_url}\n\n"
@@ -82,7 +72,7 @@ def get_zip_code_stats(zip_code):
         state_number_cases_yesterday = state_data.iloc[:,-2].iloc[0]
         growth_rate = ((state_number_cases_today-state_number_cases_yesterday)/state_number_cases_yesterday)*100
         growth_rate_str = '%.3f'%(growth_rate)
-        change_sign = ""
+
         if(growth_rate>0):
             change_sign="+"
         else:
@@ -94,6 +84,7 @@ def get_zip_code_stats(zip_code):
         state_recovered = state_stats.iloc[:,-3].iloc[0]
       
         state_response = f"{state_name.upper()}\nToday: {state_number_cases_today} confirmed cases of Covid-19  \nYesterday: {state_number_cases_yesterday} confirmed cases \nGrowth Rate: {change_sign}{growth_rate_str}%\nDeaths: {state_deaths}\nRecovered: {state_recovered}"
+        # unused variable
         state_url = state_name.replace(" ", "%20")
         # state_response+=f"Latest updates from your governor: https://twitter.com/search?q={state_url}%20governor&f=user"
 
