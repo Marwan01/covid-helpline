@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
 from responses import *
-import r
+import re
 def load_csv():
     date = datetime.now().strftime("%m-%d-%Y")
     counter = 1
