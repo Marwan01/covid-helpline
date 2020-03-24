@@ -66,9 +66,9 @@ def save_daily_subscription(bucket,phone_number,text):
 
 
 def handle_message(bucket,number,message_obj):
-    df, locations = load_data()
+    # df, locations = load_data()
     message = message_obj.rstrip()
-    location_clean = difflib.get_close_matches(message, locations,1)
+    # location_clean = difflib.get_close_matches(message, locations,1)
     if(message.count("Advice")>0):
         msg_out = ADVICE
     elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
@@ -79,8 +79,8 @@ def handle_message(bucket,number,message_obj):
         msg_out = save_daily_subscription(bucket,number,message_obj)
     elif(message.count("Send all")>0 and number =="+16364749180"):
         msg_out = trigger_daily_sms(bucket)
-    elif( len(location_clean) >0):
-        msg_out = handle_message_location(location_clean[0],df)
+    # elif( len(location_clean) >0):
+    #     msg_out = handle_message_location(location_clean[0],df)
     else:
         msg_out = DEFAULT_RESPONSE
     return msg_out
