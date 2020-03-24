@@ -20,6 +20,9 @@ def load_state_daily_report():
         try:
             url = f'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/{date}.csv'
             df = pd.read_csv(url)
+            df = df.rename(columns={'Province_State':'Province/State','Country_Region':'Country/Region'})
+            ## HOT FIX FOR JHU DATA SCHEMA ISSUE: https://github.com/CSSEGISandData/COVID-19/issues/1326
+            # print(df.head())
 
             return df
         except:
@@ -52,7 +55,7 @@ def get_zip_code_stats(zip_code):
                 county_number_cases_yesterday = int(county_data.iloc[:,-2].iloc[0])
                 # unused variable
                 county_url = county_data.iloc[:,7].iloc[0]
-                if(county_number_cases_yesterday > 0 and county_number_cases_today > 0 ):
+                if(county_number_cases_yesterday > 0 and county_number_cases_today > 0 and (county_number_cases_today-county_number_cases_yesterday>0) ):
                     county_growth_rate = ((county_number_cases_today-county_number_cases_yesterday)/county_number_cases_yesterday)*100
                     county_growth_rate_str = '%.3f'%(county_growth_rate)
                     county_response = f"Today\'s Covid-19 Report in:\n {county_name.upper()}:\n Confirmed: {county_number_cases_today}\n as of {today_date}\nYesterday: {state_number_cases_yesterday} confirmed cases \nDaily Growth Rate: {change_sign}{growth_rate_str}%"
@@ -84,7 +87,10 @@ def get_zip_code_stats(zip_code):
         state_deaths = state_stats.iloc[:,-4].iloc[0]
         state_recovered = state_stats.iloc[:,-3].iloc[0]
       
-        state_response = f"Today\'s Covid-19 Report in:\n {state_name.upper()}:\n Confirmed: {state_number_cases_today}\nRecovered: {state_recovered} \nDeaths: {state_deaths} \n as of {today_date}\nYesterday: {state_number_cases_yesterday} confirmed cases \nDaily Growth Rate: {change_sign}{growth_rate_str}%"
+        # state_response = f"{state_name.upper()}\nToday: {state_number_cases_today} confirmed cases of Covid-19  \nYesterday: {state_number_cases_yesterday} confirmed cases \nGrowth Rate: {change_sign}{growth_rate_str}%\nDeaths: {state_deaths}\nRecovered: {state_recovered}"
+        state_response = f"{state_name.upper()}\nToday: {state_number_cases_today} confirmed cases of Covid-19."
+
+
         # unused variable
         state_url = state_name.replace(" ", "%20")
         # state_response+=f"Latest updates from your governor: https://twitter.com/search?q={state_url}%20governor&f=user"
