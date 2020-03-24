@@ -1,8 +1,9 @@
 #!/bin/bash
 REPOSITORY=gcr.io/covid-helpline/covid-helpline
-CREDS=./keys.py
+SERVICE=covid-helpline
 GCPLOGIN=true
 GCPCREDS=./keys.json
+CREDS=./keys.py
 
 while getopts "nchdot:i:" opt; do
   case ${opt} in
@@ -66,7 +67,7 @@ if [ -z "$VERSION_TAG" ]; then
   echo "No specific tag entered. Here are the tagged repo images on GCP: "; 
   gcloud container images list-tags $REPOSITORY
   echo "Enter new version tag: (or CTRL+C to exit)"; 
-  read $VERSION_TAG
+  read VERSION_TAG
   echo "Building image..."
   ${SUDO} gcloud builds submit --tag ${REPOSITORY}:${VERSION_TAG}
 else 
@@ -75,16 +76,13 @@ else
 fi
 
 
-
 # push to cloud run
 if [[ ${DEPLOY} == true ]]; then
     echo "Pushing image to GCP Cloud Run..."
-    gcloud run deploy covid-helpline --image ${REPOSITORY}:${VERSION_TAG} --platform managed --region us-central1 
+    gcloud run deploy ${SERVICE} --image ${REPOSITORY}:${VERSION_TAG} --platform managed --region us-central1 
+    echo "Routing traffic to new revision..."
+    gcloud alpha run services update-traffic ${SERVICE} --to-latest --platform managed --region us-central1
 else 
     echo "WARNING: You built the image but did not deploy it. Rerun the deploy script with -d to deploy..."
 fi
-
-# cleanup
-${SUDO} docker rmi -f ${REPOSITORY}:${VERSION_TAG}
-
 
