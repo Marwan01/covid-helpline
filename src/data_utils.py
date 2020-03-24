@@ -21,7 +21,7 @@ def load_data():
     df = load_csv()
     df['Last Update'] = df['Last Update'].apply(lambda x: x.split("T")[0])
     df = df.replace(np.nan, '', regex=True)
-    locations = list(df['Country/Region'].unique()) + list(df['Province/State'].unique())
+    locations = list(df['Combined_Key'].unique())
     return df, locations
 
 def get_data_bas_location(location, df):
