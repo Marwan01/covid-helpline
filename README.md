@@ -87,11 +87,12 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
-* **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
 * **Alexandru Andrei** - *Initial work* - [AlexAndrei98](https://github.com/AlexAndrei98)
+* **Anna Tyan** - *Design work* - [annajt178](https://github.com/annajt178)
+* **Glenn Parham** - *Feature Development* - [glennparham](https://github.com/glennparham)
+* **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
+* **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
 * **Vlad Khudik** - *Initial work* - [VoltK](https://github.com/VoltK)
-* **Glenn Parham** - *Initial work* - [glennparham](https://github.com/glennparham)
 
 
 See also the list of [contributors](https://github.com/Marwan01/covid-helpline/contributors) who participated in this project.
