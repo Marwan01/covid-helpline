@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
 from responses import *
-
+import r
 def load_csv():
     date = datetime.now().strftime("%m-%d-%Y")
     counter = 1
@@ -19,28 +19,25 @@ def load_csv():
 
 def load_data():
     df = load_csv()
-    df['Last Update'] = df['Last Update'].apply(lambda x: x.split("T")[0])
+    df['Last Update']=df['Last_Update'].apply( lambda text : re.search(r'\d{4}-\d{2}-\d{2}', text).group())
     df = df.replace(np.nan, '', regex=True)
-    locations = list(df['Country/Region'].unique()) + list(df['Province/State'].unique())
+    locations = list(df['Combined_Key'].unique())
     return df, locations
 
 def get_data_bas_location(location, df):
-    if location.lower() == "US".lower() or  location.lower() == "USA".lower():
-        return ["", location, ""] + list(
-             df[df['Country/Region'].str.contains("US")].groupby("Country/Region").sum().values[0])
     try:
-        dd = df[df['Province/State'].str.contains(location)].values[0]
+        dd = df[df['Combined_Key'].str.contains(location)].values[0]
     except:
-        dd = df[df['Country/Region'].str.contains(location)].values[0]
+        dd = df[df['Country_Region'].str.contains(location)].values[0]
     return list(dd)
 
 
 def generate_message_from_row(row):
-    message = f'Today\'s Covid-19 Report in {row[0].upper()} {row[1].upper()}:\n' \
-              f'Confirmed: {row[3]} \n' \
-              f'Recovered: {row[5]} \n' \
-              f'Deaths: {row[4]}\n' \
-              f'as of {datetime.now().strftime("%B %d, %Y")} '
+    message = f'In {row[11]}:\n' \
+              f'{int(row[7])} confirmed, \n' \
+              f'{int(row[9])} recovered, \n' \
+              f'and {int(row[8])} deaths\n' \
+              f'as of {datetime.now().strftime("%B %d, %Y")}. '
     message = message.replace("  ", " ")
     return message
 
