@@ -90,7 +90,7 @@ def clean_df_row(df, key,search_value):
     Confirmed = grouped[grouped['Location']==search_value]['Confirmed'].values[0]
     Deaths = grouped[grouped['Location']==search_value]['Deaths'].values[0]
     Recovered = grouped[grouped['Location']==search_value]['Recovered'].values[0]
-    return [location,Confirmed,Deaths,Recovered]
+    return [location,Confirmed,Recovered,Deaths]
 
 def generate_message_from_row_v2(row,date):
     message = f'In {row[0]}:\n' \
