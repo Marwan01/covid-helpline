@@ -125,9 +125,9 @@ def generate_message_from_row_v2(row,date):
     else: 
         _Deaths = Deaths
         
-    growt_rate_recovered = int(new_recovered/_Recovered)
-    growt_rate_confirmed = int(new_confirmed/_Confirmed)
-    growt_rate_deaths = int(new_deaths/_Deaths)
+    growt_rate_recovered = int(new_recovered/_Recovered*100)
+    growt_rate_confirmed = int(new_confirmed/_Confirmed*100)
+    growt_rate_deaths = int(new_deaths/_Deaths*100)
 
 
     message = f'In {row[0]} on {datetime.strptime(date, "%Y-%m-%d").strftime("%B %d, %Y")}:\n' \
