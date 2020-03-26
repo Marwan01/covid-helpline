@@ -109,11 +109,31 @@ def clean_df_row(df, key,search_value):
     return [location,Confirmed,Recovered,Deaths,new_confirmed,new_recovered,new_deaths]
 
 def generate_message_from_row_v2(row,date):
-    message = f'In {row[0]}:\n' \
-              f'Confirmed:{int(row[1])} (+{int(row[4])} from yesterday), \n' \
-              f'Recovered:{int(row[2])} (+{int(row[5])} from yesterday), \n' \
-              f'Deaths:{int(row[3])} (+{int(row[6])} from yesterday), \n' \
-              f'as of {datetime.strptime(date, "%Y-%m-%d").strftime("%B %d, %Y")}. ' 
+
+    location,Confirmed,Recovered,Deaths,new_confirmed,new_recovered,new_deaths = row
+
+    if Recovered == 0 : 
+        _Recovered = 1 
+    else: 
+        _Recovered = Recovered
+    if Confirmed == 0 : 
+        _Confirmed = 1 
+    else: 
+        _Confirmed = Confirmed
+    if Deaths == 0 : 
+        _Deaths = 1 
+    else: 
+        _Deaths = Deaths
+        
+    growt_rate_recovered = int(new_recovered/_Recovered)
+    growt_rate_confirmed = int(new_confirmed/_Confirmed)
+    growt_rate_deaths = int(new_deaths/_Deaths)
+
+
+    message = f'In {row[0]} on {datetime.strptime(date, "%Y-%m-%d").strftime("%B %d, %Y")}:\n' \
+              f'Confirmed cases: {int(row[1])}\n+{new_confirmed} from yesterday,\ngrowth rate: +{growt_rate_confirmed}%' \
+              f'Recovered cases: {int(row[2])}\n+{new_recovered} from yesterday,\ngrowth rate: +{growt_rate_recovered}%' \
+              f'Deaths: {int(row[3])}\n+{new_deaths} from yesterday,\ngrowth rate: +{growt_rate_deaths}%.' 
     message = message.replace("  ", " ")
     return message
 
