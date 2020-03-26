@@ -3,6 +3,62 @@ import numpy as np
 import pandas as pd
 from responses import *
 import re
+us_state_abbrev = {
+    'Alabama': 'AL',
+    'Alaska': 'AK',
+    'Arizona': 'AZ',
+    'Arkansas': 'AR',
+    'California': 'CA',
+    'Colorado': 'CO',
+    'Connecticut': 'CT',
+    'Delaware': 'DE',
+    'District of Columbia': 'DC',
+    'Florida': 'FL',
+    'Georgia': 'GA',
+    'Hawaii': 'HI',
+    'Idaho': 'ID',
+    'Illinois': 'IL',
+    'Indiana': 'IN',
+    'Iowa': 'IA',
+    'Kansas': 'KS',
+    'Kentucky': 'KY',
+    'Louisiana': 'LA',
+    'Maine': 'ME',
+    'Maryland': 'MD',
+    'Massachusetts': 'MA',
+    'Michigan': 'MI',
+    'Minnesota': 'MN',
+    'Mississippi': 'MS',
+    'Missouri': 'MO',
+    'Montana': 'MT',
+    'Nebraska': 'NE',
+    'Nevada': 'NV',
+    'New Hampshire': 'NH',
+    'New Jersey': 'NJ',
+    'New Mexico': 'NM',
+    'New York': 'NY',
+    'North Carolina': 'NC',
+    'North Dakota': 'ND',
+    'Ohio': 'OH',
+    'Oklahoma': 'OK',
+    'Oregon': 'OR',
+    'Pennsylvania': 'PA',
+    'Puerto Rico': 'PR',
+    'Rhode Island': 'RI',
+    'South Carolina': 'SC',
+    'South Dakota': 'SD',
+    'Tennessee': 'TN',
+    'Texas': 'TX',
+    'Utah': 'UT',
+    'Vermont': 'VT',
+    'Virgin Islands': 'VI',
+    'Virginia': 'VA',
+    'Washington': 'WA',
+    'West Virginia': 'WV',
+    'Wisconsin': 'WI',
+    'Wyoming': 'WY',
+}
+
 def load_csv():
     date = datetime.now().strftime("%m-%d-%Y")
     counter = 1
@@ -22,32 +78,34 @@ def load_data():
     df['Last Update']=df['Last_Update'].apply( lambda text : re.search(r'\d{4}-\d{2}-\d{2}', text).group())
     df = df.replace(np.nan, '', regex=True)
     locations = list(df['Combined_Key'].unique())
-    return df, locations
+    states = list(set(list(df['Province_State'].dropna())))[1:]
+    possible_us = ['Us','United States',"USA","United States of America","Usa"]
 
-def get_data_bas_location(location, df):
-    try:
-        dd = df[df['Combined_Key'].str.contains(location)].values[0]
-    except:
-        dd = df[df['Country_Region'].str.contains(location)].values[0]
-    return list(dd)
+    return df, locations, states,possible_us
 
+def clean_df_row(df, key,search_value):
+    grouped = df.groupby(key).sum().reset_index()
+    grouped.columns.values[0]='Location'
+    location = grouped[grouped['Location']==search_value]['Location'].values[0]
+    Confirmed = grouped[grouped['Location']==search_value]['Confirmed'].values[0]
+    Deaths = grouped[grouped['Location']==search_value]['Deaths'].values[0]
+    Recovered = grouped[grouped['Location']==search_value]['Recovered'].values[0]
+    return [location,Confirmed,Deaths,Recovered]
 
-def generate_message_from_row(row):
-    message = f'In {row[11]}:\n' \
-              f'{int(row[7])} confirmed, \n' \
-              f'{int(row[9])} recovered, \n' \
-              f'and {int(row[8])} deaths\n' \
-              f'as of {datetime.now().strftime("%B %d, %Y")}. '
+def generate_message_from_row_v2(row,date):
+    message = f'In {row[0]}:\n' \
+              f'{int(row[1])} confirmed, \n' \
+              f'{int(row[2])} recovered, \n' \
+              f'and {int(row[3])} deaths\n' \
+              f'as of {datetime.strptime(date, "%Y-%m-%d").strftime("%B %d, %Y")}. '
     message = message.replace("  ", " ")
     return message
 
-
-def handle_message_location(location,df):
-    row = get_data_bas_location(location, df)
-    msg_out = generate_message_from_row(row)
+def handle_message_location(location,df,key):
+    row = clean_df_row(df,key,location)
+    date = df['Last Update'].iloc[0]
+    msg_out = generate_message_from_row_v2(row,date)
     return msg_out
-
-
 def load_data_sms(bucket):
     data = {}
     for b in bucket.list_blobs(prefix='sub/'):
