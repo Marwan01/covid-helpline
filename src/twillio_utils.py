@@ -71,7 +71,7 @@ def handle_message(bucket,number,message_obj):
     
     message = message_obj.rstrip()
     
-    
+    #TODO CHECK COUNTRIES BEOFRE US STATES THEN combinned Key
     
     location_clean = difflib.get_close_matches(message, locations,1)
     location_clean_states = difflib.get_close_matches(message, states,1)
