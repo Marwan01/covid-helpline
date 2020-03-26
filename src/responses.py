@@ -2,7 +2,7 @@
 DEFAULT_RESPONSE ="""Welcome to the Covid-19 Helpline. \n
 - Text 'Advice' to get information on how to protect yourself from Covid-19.\n
 - Text 'News' to get the most popular daily news article about Covid-19.\n
-- Text your zip code (i.e. 12345) to get the latest info on Covid-19 in your area.\n
+- Text a country, state or county to get the latest info on Covid-19 that is available in your area.\n
 - Text 'Stop' to opt out."""
 
 ADVICE ="""CDC Advice: \n

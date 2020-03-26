@@ -1,5 +1,5 @@
 # /usr/bin/env python
-global DEFAULT_RESPONSE,ADVICE, newsapi, client,bucket, client_twillio
+global DEFAULT_RESPONSE,ADVICE, newsapi, client,bucket, client_twillio, loaded_data_bool
 
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
