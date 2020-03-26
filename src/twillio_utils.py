@@ -66,21 +66,44 @@ def save_daily_subscription(bucket,phone_number,text):
 
 
 def handle_message(bucket,number,message_obj):
-    # df, locations = load_data()
+    df, locations,states,possible_us = load_data()
+    
+    
     message = message_obj.rstrip()
-    # location_clean = difflib.get_close_matches(message, locations,1)
+    
+    
+    
+    location_clean = difflib.get_close_matches(message, locations,1)
+    location_clean_states = difflib.get_close_matches(message, states,1)
+    location_clean_us = difflib.get_close_matches(message, possible_us,1)
+    location_clean_canada = difflib.get_close_matches(message, ["Canada"],1)
+
+    #CHECK : Advice
     if(message.count("Advice")>0):
         msg_out = ADVICE
-    elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
-        msg_out = get_zip_code_stats(message)
+    # elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
+    #     msg_out = get_zip_code_stats(message)
+    #CHECK : News
     elif(message.count("News")>0):
         msg_out = return_news()
+    #CHECK : Subscribe
     elif(message.count("Subscribe")>0):
         msg_out = save_daily_subscription(bucket,number,message_obj)
+    #CHECK : Send all
     elif(message.count("Send all")>0 and number =="+16364749180"):
         msg_out = trigger_daily_sms(bucket)
-    # elif( len(location_clean) >0):
-    #     msg_out = handle_message_location(location_clean[0],df)
+    #CHECK : for United States
+    elif( len(location_clean_us) >0):
+        msg_out = handle_message_location("US",df,"Country_Region") 
+    #CHECK : Canada
+    elif( len(location_clean_canada) >0):
+        msg_out = handle_message_location(location_clean_canada[0],df,"Country_Region") 
+    #CHECK : USA States 
+    elif( len(location_clean_states) >0):
+        msg_out = handle_message_location(location_clean_states[0],df,"Province_State") 
+    #Countries and cities
+    elif( len(location_clean) >0):
+        msg_out = handle_message_location(location_clean[0],df,"Combined_Key")
     else:
         msg_out = DEFAULT_RESPONSE
     return msg_out
