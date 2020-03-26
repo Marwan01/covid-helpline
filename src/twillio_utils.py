@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 from data_utils import *
 from responses import *
 from news import return_news
-from zip_code import get_zip_code_stats
+from zip_code import handle_zip_code
 import re
 
 import difflib
@@ -71,7 +71,7 @@ def handle_message(bucket,number,message_obj):
     
     message = message_obj.rstrip()
     
-    
+    #TODO CHECK COUNTRIES BEOFRE US STATES THEN combinned Key
     
     location_clean = difflib.get_close_matches(message, locations,1)
     location_clean_states = difflib.get_close_matches(message, states,1)
@@ -81,8 +81,8 @@ def handle_message(bucket,number,message_obj):
     #CHECK : Advice
     if(message.count("Advice")>0):
         msg_out = ADVICE
-    # elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
-    #     msg_out = get_zip_code_stats(message)
+    elif(re.search("^[0-9]{5}(?:-[0-9]{4})?$", message)):
+        msg_out = handle_zip_code(message,df)
     #CHECK : News
     elif(message.count("News")>0):
         msg_out = return_news()
