@@ -73,10 +73,10 @@ def handle_message(bucket,number,message_obj):
     
     
     
-    location_clean = difflib.get_close_matches(message, locations,1)
-    location_clean_country = difflib.get_close_matches(message, countries,1)
+    location_clean = difflib.get_close_matches(message, locations,1,0.65)
+    location_clean_country = difflib.get_close_matches(message, countries,1,0.8)
 
-    location_clean_states = difflib.get_close_matches(message, states,1)
+    location_clean_states = difflib.get_close_matches(message, states,1,0.8)
     location_clean_us = difflib.get_close_matches(message, possible_us,1)
     location_clean_canada = difflib.get_close_matches(message, ["Canada"],1)
 
