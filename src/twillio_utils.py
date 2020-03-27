@@ -66,14 +66,16 @@ def save_daily_subscription(bucket,phone_number,text):
 
 
 def handle_message(bucket,number,message_obj):
-    df, locations,states,possible_us = load_data()
+    df, locations,states,possible_us, countries = load_data()
     
     
     message = message_obj.rstrip()
     
-    #TODO CHECK COUNTRIES BEOFRE US STATES THEN combinned Key
+    
     
     location_clean = difflib.get_close_matches(message, locations,1)
+    location_clean_country = difflib.get_close_matches(message, countries,1)
+
     location_clean_states = difflib.get_close_matches(message, states,1)
     location_clean_us = difflib.get_close_matches(message, possible_us,1)
     location_clean_canada = difflib.get_close_matches(message, ["Canada"],1)
@@ -98,6 +100,9 @@ def handle_message(bucket,number,message_obj):
     #CHECK : Canada
     elif( len(location_clean_canada) >0):
         msg_out = handle_message_location(location_clean_canada[0],df,"Country_Region") 
+    #CHECK: Counntries
+    elif( len(location_clean_country) >0):
+        msg_out = handle_message_location(location_clean_country[0],df,"Country_Region") 
     #CHECK : USA States 
     elif( len(location_clean_states) >0):
         msg_out = handle_message_location(location_clean_states[0],df,"Province_State") 
