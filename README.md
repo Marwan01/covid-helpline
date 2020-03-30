@@ -36,10 +36,14 @@ Making this information accessible via text, along with the latest Coronavirus n
 ### Getting Started
 
 This project uses Python and Twilio. To get started make sure you have [Python 3.7+](https://www.python.org/downloads/) and [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart) installed. You can install Twilio CLI with Homebrew using this commad:
-`brew tap twilio/brew && brew install twilio`
+```
+brew tap twilio/brew && brew install twilio
+```
 
 You will need to login to Twilio CLI:
-`twilio login`
+```
+twilio login
+```
 
 In order to run the project you need the following credentials:
 * `keys.json` that you can get by generating an IAM role in [GCP](https://cloud.google.com/storage/docs/access-control/iam-roles) with the Storage Object Access Role.
@@ -53,13 +57,17 @@ pip3 install -r requirements.txt
 ```
 
 To start your own localhost flask server:
-`python3 main.py`
+```
+python3 main.py
+```
 
 Twilio partners with [Ngrok](https://ngrok.com/) which allows you to share your localhost via network. This makes the next command possible and lets you link your python script to Twilio. After logging in to the Twilio CLI, set your Twilio URL webhook to be the one from your localhost:
 
 +19142684397 is our development number. When using your own Twilio account, make sure you replace the below number with your own.
 
-`twilio phone-numbers:update "+19142684397" --sms-url="http://localhost:8080/sms"`
+```
+twilio phone-numbers:update "+19142684397" --sms-url="http://localhost:8080/sms"
+```
 
 Now you should be able to text your number and use the app.
 
@@ -68,7 +76,7 @@ There is currently no testing for the code. Due to the importance of speed of de
 
 ## Deployment
 
-We containerize our python app using docker and then deploy it to GCP Cloud Run using the ```deploy.sh``` script. Feel free to take a look at the [Deploy Script](https://github.com/Marwan01/covid-helpline/src/deploy.sh) & the [Dockerfile](https://github.com/Marwan01/covid-helpline/src/Dockerfile)
+We containerize our python app using docker and then deploy it to GCP Cloud Run using the ```deploy.sh``` script. Feel free to take a look at the [Deploy Script](https://github.com/Marwan01/covid-helpline/blob/master/src/deploy.sh) & the [Dockerfile](https://github.com/Marwan01/covid-helpline/blob/master/src/Dockerfile)
 
 ## Built With
 
@@ -88,16 +96,16 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Alexandru Andrei** - *Initial work* - [AlexAndrei98](https://github.com/AlexAndrei98)
-* **Ajay Raj** - *Feature Development* - [ajayraj](https://github.com/ajayraj)
-* **Anna Tyan** - *Design work/Public Relations/Marketing* - [annajt178](https://github.com/annajt178)
+* **Ajay Raj** - *Contributor* - [ajayraj](https://github.com/ajayraj)
+* **Anna Tyan** - *Design* - [annajt178](https://github.com/annajt178)
 * **Glenn Parham** - *Feature Development* - [glennparham](https://github.com/glennparham)
 * **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
-* **Sumiya Choudhry** - *Scrum Coordinator/Public Relations/Marketing* - [SumiyaChoudhry](https://github.com/SumiyaChoudhry)
+* **Sumiya Choudhry** - *Scrum Coordinator* - [SumiyaChoudhry](https://github.com/SumiyaChoudhry)
 * **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
 * **Vlad Khudik** - *Initial work* - [VoltK](https://github.com/VoltK)
-* **Cleopatra Nestor** - *Public Relations/Marketing*
+* **Cleopatra Nestor** - *Public Relations*
 * **Karla Bravo** - *Lead Video Editor* 
-* **Kassidy Tharp** - *Public Relations/Marketing* 
+* **Kassidy Tharp** - *Marketing Specialist* 
 
 
 See also the list of [contributors](https://github.com/Marwan01/covid-helpline/contributors) who participated in this project.
