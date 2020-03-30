@@ -131,9 +131,9 @@ def generate_message_from_row_v2(row,date):
 
 
     message = f'In {row[0]} on {datetime.strptime(date, "%Y-%m-%d").strftime("%B %d, %Y")}:\n' \
-              f'Confirmed cases: {int(row[1])}\n+{new_confirmed} from yesterday,\ngrowth rate: +{growt_rate_confirmed}%\n' \
-              f'Recovered cases: {int(row[2])}\n+{new_recovered} from yesterday,\ngrowth rate: +{growt_rate_recovered}%\n' \
-              f'Deaths: {int(row[3])}\n+{new_deaths} from yesterday,\ngrowth rate: +{growt_rate_deaths}%.' 
+              f'Confirmed cases: {int(row[1])}\n+{new_confirmed} from yesterday,\ngrowth rate: +{growt_rate_confirmed}%' \
+              f'\nRecovered cases: {int(row[2])}\n+{new_recovered} from yesterday.' \
+              f'\nDeaths: {int(row[3])}\n+{new_deaths} from yesterday.' 
     message = message.replace("  ", " ")
     return message
 

@@ -1,8 +1,10 @@
 
-DEFAULT_RESPONSE ="""Welcome to the Covid-19 Helpline. \n
+DEFAULT_RESPONSE ="""Welcome to the Covid-19 Helpline. \n\n
 - Text 'Advice' to get information on how to protect yourself from Covid-19.\n
 - Text 'News' to get the most popular daily news article about Covid-19.\n
-- Text a country, state or county to get the latest info on Covid-19 that is available in your area.\n
+- Text your country, state, city name, or zip code to get the latest available report on Covid-19 in your area.\n
+- Text 'Subscribe' followed by country/state name to receive the most up to date Covid-19 count report from John Hopkins as soon as it is released.
+- Text 'Initiative' to learn more about our work and our mission to fight coronavirus.
 - Text 'Stop' to opt out."""
 
 ADVICE ="""CDC Advice: \n
@@ -26,5 +28,5 @@ ADVICE ="""CDC Advice: \n
 
 Source: https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html"""
 
-PHONE_MSG = ''' Our service is only available through sms! Please text us!
+PHONE_MSG = ''' Our service is only available via SMS text messages! Please text us to take full advantage of our free service!
 '''

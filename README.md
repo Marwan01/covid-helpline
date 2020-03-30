@@ -32,6 +32,9 @@ These stats are extremely important; People at higher risk of contracting COVID-
 
 Making this information accessible via text, along with the latest Coronavirus news, and the CDC advice about how to stay safe would greatly aid mankind in it's quest to control this fatal virus. Covid Helpline is a *reasonably easy and cheap solution* to this issue.
 
+Learn more about our mission in this Youtube video from our team: https://www.youtube.com/watch?v=axAEKzDHBm4&feature=youtu.be
+
+# Development
 
 ### Getting Started
 
@@ -63,10 +66,10 @@ Twilio partners with [Ngrok](https://ngrok.com/) which allows you to share your 
 
 Now you should be able to text your number and use the app.
 
-## Testing
+### Testing
 There is currently no testing for the code. Due to the importance of speed of delivery in this situation, we decided to focus on user/load testing and make sure we can scale the functionality to those who need it the most.
 
-## Deployment
+### Deployment
 
 We containerize our python app using docker and then deploy it to GCP Cloud Run using the ```deploy.sh``` script. Feel free to take a look at the [Deploy Script](https://github.com/Marwan01/covid-helpline/src/deploy.sh) & the [Dockerfile](https://github.com/Marwan01/covid-helpline/src/Dockerfile)
 
