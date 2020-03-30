@@ -17,7 +17,7 @@ to get started, text the below number following the below instructions:
 
 * Text **"Advice"** to get CDC's best advice about how to stay safe during the Covid-19 pandemic.
 * Text **"News"** to get the latest news articles about Coronavirus from a truthful source:  [News API](https://newsapi.org/).
-* Text the desired **country name** *or* **state/province name** to the designated twilio phone number to receive the latest updated data from [John Hopkins' open source repo](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports) about the number of *confirmed cases*, *deaths*, and *recoveries* in that location.
+* Text the desired **country name** *or* **state/province name** or **city name** or **zip code** to the designated twilio phone number to receive the latest updated data from [John Hopkins' open source repo](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports) about the number of *confirmed cases*, *deaths*, and *recoveries* in that location.
 * Text **"Subscribe"** followed by **country/state** name (Example: 'Subscribe Italy') to receieve the most up to date Covid-19 count report from John Hopkins as soon as it is released.
 * Text **Initiative** to learn more about our work and our mission to fight coronavirus.
 * Text **anything else** to receive the generic helper SMS with all of the above options.
