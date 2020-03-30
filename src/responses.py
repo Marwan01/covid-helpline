@@ -1,10 +1,10 @@
 
-DEFAULT_RESPONSE ="""Welcome to the Covid-19 Helpline. \n\n
+DEFAULT_RESPONSE ="""Welcome to the Covid-19 Helpline. \n
 - Text 'Advice' to get information on how to protect yourself from Covid-19.\n
 - Text 'News' to get the most popular daily news article about Covid-19.\n
 - Text your country, state, city name, or zip code to get the latest available report on Covid-19 in your area.\n
-- Text 'Subscribe' followed by country/state name to receive the most up to date Covid-19 count report from John Hopkins as soon as it is released.
-- Text 'Initiative' to learn more about our work and our mission to fight coronavirus.
+- Text 'Subscribe' followed by country/state name to receive the most up to date Covid-19 count report from John Hopkins as soon as it is released.\n
+- Text 'Initiative' to learn more about our work and our mission to fight coronavirus.\n
 - Text 'Stop' to opt out."""
 
 ADVICE ="""CDC Advice: \n
@@ -34,7 +34,7 @@ PHONE_MSG = ''' Our service is only available via SMS text messages! Please text
 INITIATIVE = '''
 Covid Helpline is a non-profit, open source, community driven initiative created to raise awareness and boost communication about the current Coronavirus outbreak. 
 Since the release of Covid Helpline, we have exchanged over 10.000 SMS with more than 1000 unique phone numbers! 
-Help us keep this service free by funding us and supporting our development. 
+Help us keep this service FREE by funding us and supporting our development. 
 Donate via GoFundMe link: https://www.gofundme.com/f/help-spread-information-about-covid19-via-text
 
 '''
