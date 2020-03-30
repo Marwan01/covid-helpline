@@ -29,13 +29,15 @@ def filter_df_lat_long(df,lat,long):
     return df[(df['Lat']==lat) & (df['Long_']==long )]['Combined_Key'].values[0]#MATACHES LOW KEY @@!!
 
 
-def handle_zip_code(code,df):            
-    search = SearchEngine(simple_zipcode=True)
-    zipcode = search.by_zipcode(code)
-    data_lat_long=load_lat_long_data(df)
-    v = {'lat': zipcode.lat, 'lon': zipcode.lng}
-    lat,long = closest(data_lat_long, v)
-    location_cleaned_after_zip = filter_df_lat_long(df,lat,long)
-    print(location_cleaned_after_zip)
-    msg_out = handle_message_location(location_cleaned_after_zip,df,'Combined_Key')#MATACHES UP KEY @@!!
+def handle_zip_code(code,df):  
+    try:          
+        search = SearchEngine(simple_zipcode=True)
+        zipcode = search.by_zipcode(code)
+        data_lat_long=load_lat_long_data(df)
+        v = {'lat': zipcode.lat, 'lon': zipcode.lng}
+        lat,long = closest(data_lat_long, v)
+        location_cleaned_after_zip = filter_df_lat_long(df,lat,long)
+        msg_out = handle_message_location(location_cleaned_after_zip,df,'Combined_Key')#MATACHES UP KEY @@!!
+    except:
+        msg_out = "Zip code not found"
     return msg_out
