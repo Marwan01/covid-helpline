@@ -6,7 +6,8 @@
 
 ## Helping spread communication about novel virus Covid-19 via FREE text messages for everyone.
 
-Covid Helpline is a **open source tool** created to raise awareness and boost communication about the current coronavirus outbreak. This is done by making the latest updated data obtained from [John Hopkins' *Covid-19* data repository](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports)   available to everyone online and offline.
+Covid Helpline is a non-profit, **open source**, community driven initiative created to raise awareness and boost communication about the current Coronavirus outbreak. 
+We make the latest updated data obtained from [John Hopkins' *Covid-19* data repository](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports)   available via SMS, along with important tips and news about Covid-19.
 
 ## Getting Started
 
@@ -18,6 +19,7 @@ to get started, text the below number following the below instructions:
 * Text **"News"** to get the latest news articles about Coronavirus from a truthful source:  [News API](https://newsapi.org/).
 * Text the desired **country name** *or* **state/province name** to the designated twilio phone number to receive the latest updated data from [John Hopkins' open source repo](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports) about the number of *confirmed cases*, *deaths*, and *recoveries* in that location.
 * Text **"Subscribe"** followed by **country/state** name (Example: 'Subscribe Italy') to receieve the most up to date Covid-19 count report from John Hopkins as soon as it is released.
+* Text **Initiative** to learn more about our work and our mission to fight coronavirus.
 * Text **anything else** to receive the generic helper SMS with all of the above options.
 * Text **"Stop"** to opt out.
 
@@ -31,7 +33,7 @@ These stats are extremely important; People at higher risk of contracting COVID-
 
 Making this information accessible via text, along with the latest Coronavirus news, and the CDC advice about how to stay safe would greatly aid mankind in it's quest to control this fatal virus. Covid Helpline is a *reasonably easy and cheap solution* to this issue.
 
-Learn more about our mission in this Youtube video from our team: https://www.youtube.com/watch?v=axAEKzDHBm4&feature=youtu.be
+![Learn more about our mission in this Youtube video from our team](https://www.youtube.com/watch?v=axAEKzDHBm4&feature=youtu.be)
 
 # Development
 
