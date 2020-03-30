@@ -96,7 +96,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
 * **Vlad Khudik** - *Initial work* - [VoltK](https://github.com/VoltK)
 * **Cleopatra Nestor** - *Public Relations/Marketing*
-* **Karla Bravo** - *Lead Editor* 
+* **Karla Bravo** - *Lead Video Editor* 
 * **Kassidy Tharp** - *Public Relations/Marketing* 
 
 
