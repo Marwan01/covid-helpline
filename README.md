@@ -8,8 +8,6 @@
 
 Covid Helpline is a **open source tool** created to raise awareness and boost communication about the current coronavirus outbreak. This is done by making the latest updated data obtained from [John Hopkins' *Covid-19* data repository](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports)   available to everyone online and offline.
 
-![Demo Gif](assets/covid-helpline-demo.gif)
-
 ## Getting Started
 
 to get started, text the below number following the below instructions:
@@ -23,6 +21,7 @@ to get started, text the below number following the below instructions:
 * Text **anything else** to receive the generic helper SMS with all of the above options.
 * Text **"Stop"** to opt out.
 
+![Demo Gif](assets/covid-helpline-demo.gif)
 
 # Why is this important?
 
