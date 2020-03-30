@@ -86,8 +86,10 @@ def load_data():
     locations = list(df['Combined_Key'].unique())
     states = list(set(list(df['Province_State'].dropna())))[1:]
     possible_us = ['Us','United States',"USA","United States of America","Usa"]
+    countries = list(df['Country_Region'].unique())    
+    
+    return df, locations, states, possible_us, countries
 
-    return df, locations, states,possible_us
 
 def clean_df_row(df, key,search_value):
     grouped = df.groupby(key).sum().reset_index()
