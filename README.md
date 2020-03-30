@@ -33,7 +33,7 @@ These stats are extremely important; People at higher risk of contracting COVID-
 
 Making this information accessible via text, along with the latest Coronavirus news, and the CDC advice about how to stay safe would greatly aid mankind in it's quest to control this fatal virus. Covid Helpline is a *reasonably easy and cheap solution* to this issue.
 
-![Learn more about our mission in this Youtube video from our team](https://www.youtube.com/watch?v=axAEKzDHBm4&feature=youtu.be)
+[Learn more about our mission in this Youtube video from our team](https://www.youtube.com/watch?v=axAEKzDHBm4&feature=youtu.be)
 
 # Development
 
