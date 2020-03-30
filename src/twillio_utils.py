@@ -70,9 +70,9 @@ def handle_message(bucket,number,message_obj):
     
     
     message = message_obj.rstrip()
+    print(message_obj)
     
-    
-    
+
     location_clean = difflib.get_close_matches(message, locations,1,0.65)
     location_clean_country = difflib.get_close_matches(message, countries,1,0.8)
 
@@ -88,9 +88,18 @@ def handle_message(bucket,number,message_obj):
     #CHECK : News
     elif(message.count("News")>0):
         msg_out = return_news()
+    #CHECK : Deaths
+    # elif(message.count("Deaths")>0):
+    #     msg_out = generate_top10_report_death(df)
+    # #CHECK : Confirmed
+    # elif(message.count("Confirmed")>0):
+    #     msg_out =generate_top10_report_confrimed(df)
     #CHECK : Subscribe
     elif(message.count("Subscribe")>0):
         msg_out = save_daily_subscription(bucket,number,message_obj)
+    #CHECK : Initiative
+    elif(message.count("Initiative")>0):
+        msg_out =INITIATIVE
     #CHECK : Send all
     elif(message.count("Send all")>0 and number =="+16364749180"):
         msg_out = trigger_daily_sms(bucket)
