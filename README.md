@@ -88,11 +88,16 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Alexandru Andrei** - *Initial work* - [AlexAndrei98](https://github.com/AlexAndrei98)
-* **Anna Tyan** - *Design work* - [annajt178](https://github.com/annajt178)
+* **Ajay Raj** - *Feature Development* - [ajayraj](https://github.com/ajayraj)
+* **Anna Tyan** - *Design work/Public Relations/Marketing* - [annajt178](https://github.com/annajt178)
 * **Glenn Parham** - *Feature Development* - [glennparham](https://github.com/glennparham)
 * **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
+* **Sumiya Choudhry** - *Scrum Coordinator/Public Relations/Marketing* - [SumiyaChoudhry](https://github.com/SumiyaChoudhry)
 * **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
 * **Vlad Khudik** - *Initial work* - [VoltK](https://github.com/VoltK)
+* **Cleopatra Nestor** - *Public Relations/Marketing*
+* **Karla Bravo** - *Lead Video Editor* 
+* **Kassidy Tharp** - *Public Relations/Marketing* 
 
 
 See also the list of [contributors](https://github.com/Marwan01/covid-helpline/contributors) who participated in this project.
