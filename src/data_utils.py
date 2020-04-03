@@ -84,6 +84,8 @@ def load_data():
     df['Last Update']=df['Last_Update'].apply( lambda text : re.search(r'\d{4}-\d{2}-\d{2}', text).group())
     df = df.replace(np.nan, '', regex=True)
     locations = list(df['Combined_Key'].unique())
+    df['Long_'] = pd.to_numeric(df['Long_'])
+    df['Lat'] = pd.to_numeric(df['Lat'])
     states = list(set(list(df['Province_State'].dropna())))[1:]
     possible_us = ['Us','United States',"USA","United States of America","Usa"]
     countries = list(df['Country_Region'].unique())    
