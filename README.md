@@ -1,4 +1,4 @@
-# ![Cover](assets/cover.png)
+# ![Cover](assets/cover(updated).png)
 
 # Covid Helpline
 
