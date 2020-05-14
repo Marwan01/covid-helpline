@@ -7,6 +7,10 @@ include_in_header: true
 # About
 
 Covid Helpline is a non-profit, open source, community driven initiative created to raise awareness and facilitate accurate information and communication regarding current Coronavirus outbreak. We make the latest updated data obtained from [John Hopkins University’ Covid-19 data repository](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports) available via SMS, along with important tips and news about Covid-19.
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/axAEKzDHBm4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
 
 # Why is this important?
 
@@ -20,17 +24,16 @@ Making this vital information accessible via text, along with the latest Coronav
 
 # Our team
 
-    Alexandru Andrei - Initial work - [AlexAndrei98](github.com/alexandrei98)
-	Marouen Helali - Initial work - Marwan01
-	Vanessa Trujillo - Initial work - trujivan
-    Ajay Raj - Contributor - ajayraj
-    Anna Tyan - Design - annajt178
-    Glenn Parham - Feature Development - glennparham
-    Sumiya Choudhry - Scrum Coordinator - SumiyaChoudhry
-    Vlad Khudik - Initial work - VoltK
+    Alexandru Andrei - Initial work 
+	Marouen Helali - Initial work 
+	Vanessa Trujillo - Initial work 
+    Anna Tyan - Web & Digital Design 
+    Glenn Parham - Feature Development 
+    Sumiya Choudhry - Scrum Coordinator 
+    Vlad Khudik - Initial work 
 	
     Cleopatra Nestor - Public Relations
-    Karla Bravo - Lead Video Editor
+    Karla Bravo - Video Editor
     Kassidy Tharp - Marketing 
     Cristiana Faur - Marketing
 	Andrea Hoppert - Marketing 
@@ -42,10 +45,6 @@ Making this vital information accessible via text, along with the latest Coronav
 
 We are currently seeking to work with other likeminded developers who are willing to give us a hand in completing the work listed in the [issues section](https://github.com/Marwan01/covid-helpline/issues) following our [contribution guidelines](https://github.com/Marwan01/covid-helpline/blob/master/.github/CONTRIBUTING.md).
 
-
-# Support
-
-This project is in serious need of contributions and funding. If you are interested in saving the world, getting your questions answered, or reaching out to the developers, contact us at via [email](mailto:covid.helpline@gmail.com). We are currently asking for donations via this [GoFundMe](https://www.gofundme.com/f/help-spread-information-about-covid19-via-text) page and would really appreciate any donation amount. The goal is to keep Covid Helpline running for FREE for all of its users. Help us with our mission by helping us spread the word on social media: [Facebook](https://www.facebook.com/covidhelpline) & [Instagram](https://www.instagram.com/covid_helpline/).
 
 <br><br>
 
