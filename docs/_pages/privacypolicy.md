@@ -64,11 +64,27 @@ Covid Helpline team
 				</span>
 			</a>
 		{% endif %}
+		{% if site.instagram_username %}
+			<a href="https://instagram.com/{{ site.instagram_username }}">
+				<span class="fa-stack fa-1x">
+					<i class="socialIconBack fas fa-circle fa-stack-2x"></i>
+					<i class="socialIconTop fab fa-instagram fa-stack-1x"></i>
+				</span>
+			</a>
+		{% endif %}
 		{% if site.twitter_username %}
 			<a href="https://twitter.com/{{ site.twitter_username }}">
 				<span class="fa-stack fa-1x">
 					<i class="socialIconBack fas fa-circle fa-stack-2x"></i>
 					<i class="socialIconTop fab fa-twitter fa-stack-1x"></i>
+				</span>
+			</a>
+		{% endif %}
+		{% if site.youtube_username %}
+			<a href="https://youtube.com/{{ site.youtube_username }}">
+				<span class="fa-stack fa-1x">
+					<i class="socialIconBack fas fa-circle fa-stack-2x"></i>
+					<i class="socialIconTop fab fa-youtube fa-stack-1x"></i>
 				</span>
 			</a>
 		{% endif %}
