@@ -1,11 +1,11 @@
 ---
 layout: page
-title: How it works
+title: How It Works
 include_in_header: true
 ---
 
 
-# How it works
+# How It Works
 Helping spread communication about novel virus COVID - 19 via FREE text messages for everyone 
 ## Step 1
 ![text](../assets/textbubble.png)
