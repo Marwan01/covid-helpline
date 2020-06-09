@@ -99,13 +99,12 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
+* **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
+* **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
 * **Alexandru Andrei** - *Initial work* - [AlexAndrei98](https://github.com/AlexAndrei98)
-* **Ajay Raj** - *Contributor* - [ajayraj](https://github.com/ajayraj)
 * **Anna Tyan** - *Design* - [annajt178](https://github.com/annajt178)
 * **Glenn Parham** - *Feature Development* - [glennparham](https://github.com/glennparham)
-* **Marouen Helali** - *Initial work* - [Marwan01](https://github.com/Marwan01)
 * **Sumiya Choudhry** - *Scrum Coordinator* - [SumiyaChoudhry](https://github.com/SumiyaChoudhry)
-* **Vanessa Trujillo** - *Initial work* - [trujivan](https://github.com/trujivan)
 * **Vlad Khudik** - *Initial work* - [VoltK](https://github.com/VoltK)
 * **Cleopatra Nestor** - *Public Relations*
 * **Karla Bravo** - *Lead Video Editor* 
