@@ -33,7 +33,7 @@ PHONE_MSG = ''' Our service is only available via SMS text messages! Please text
 
 INITIATIVE = '''
 Covid Helpline is a non-profit, open source, community driven initiative created to raise awareness and boost communication about the current Coronavirus outbreak. 
-Since the release of Covid Helpline, we have exchanged over 10.000 SMS with more than 1000 unique phone numbers! 
+Since the release of Covid Helpline, we have exchanged over 15.000 SMS with more than 1200 unique phone numbers! 
 Help us keep this service FREE by funding us and supporting our development. 
 Donate via GoFundMe link: https://www.gofundme.com/f/help-spread-information-about-covid19-via-text
 
