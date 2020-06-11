@@ -11,6 +11,7 @@ from uszipcode import SearchEngine
 import difflib
 from keys import account_sid, auth_token, news_api_key
 
+client_twillio = Client(account_sid, auth_token)
 client = storage.Client(project='covid-helpline')
 bucket = client.get_bucket('covid-sms')
 today_date = datetime.now().strftime("%m-%d-%Y")
