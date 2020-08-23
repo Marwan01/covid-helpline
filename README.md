@@ -1,5 +1,24 @@
 # ![Cover](assets/cover(updated).png)
 
+# covid-helpline is being decommissioned and migrated over to a new bot initiative called Project Li. An announcement will be made to our users to facilitate the deprecation of covid-helpline and migration to Li.
+
+### Accomplishments
+
+- Devpost submission: https://devpost.com/software/covid-helpline
+- Fundraiser & user support: https://www.gofundme.com/f/help-spread-information-about-covid19-via-text?utm_source=customer&utm_medium=copy_link&utm_campaign=p_cf+share-flow-1
+- Received Twilio $500 grant
+- Served texts to an average of 200 subscribers for 6 months
+- Sent and received over 50000 texts in total
+- Online presence:
+  - Facebook Page (800+ members): https://www.facebook.com/covidhelpline/
+  - Instagram: https://www.instagram.com/covid_helpline/
+  - Twitter: https://twitter.com/covid_helpline
+  - Youtube: https://www.youtube.com/channel/UC1XCOJ4hYywwJnBfrkbtvfA
+- Open source documentation previously created:
+
+
+
+
 # Covid Helpline
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Marwan01/corona-sms/blob/master/LICENSE)
