@@ -23,7 +23,8 @@ covid-helpline is being decommissioned and migrated over to a new bot initiative
 
 # Covid Helpline
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Marwan01/corona-sms/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Marwan01/corona-sms/blob/master/LICENSE) [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 
 ## Helping spread communication about novel virus Covid-19 via FREE text messages for everyone.
 
