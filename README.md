@@ -1,6 +1,8 @@
 # ![Cover](assets/cover(updated).png)
 
-# covid-helpline is being decommissioned and migrated over to a new bot initiative called Project Li. An announcement will be made to our users to facilitate the deprecation of covid-helpline and migration to Li.
+# DEPRECATED
+
+covid-helpline is being decommissioned and migrated over to a new bot initiative called Project Li. An announcement will be made to our users to facilitate the deprecation of covid-helpline and migration to Li.
 
 ### Accomplishments
 
