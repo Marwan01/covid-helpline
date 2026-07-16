@@ -55,7 +55,7 @@ def trigger_daily_sms(bucket):
     sms_to_send = load_data_sms(bucket)
     succes_count, failure_count = send_mass_text(sms_to_send,bucket)
 
-    return f'Sucesfully sent {succes_count} sms. Failed for {failure_count} sms.'
+    return f'Successfully sent {succes_count} sms. Failed for {failure_count} sms.'
 
 def save_daily_subscription(bucket,phone_number,text):
     location_subscribed = text.split(" ",1)[1]
