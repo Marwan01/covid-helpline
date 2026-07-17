@@ -218,7 +218,7 @@ def send_mass_text(data,bucket):
 def trigger_daily_sms(bucket):
     sms_to_send = load_data_sms(bucket)
     succes_count, failure_count = send_mass_text(sms_to_send,bucket)
-    msg = f'Sucesfully sent {succes_count} sms. Failed for {failure_count} sms.'
+    msg = f'Successfully sent {succes_count} sms. Failed for {failure_count} sms.'
     send_message(msg,"+16364749180")
 
     return msg
